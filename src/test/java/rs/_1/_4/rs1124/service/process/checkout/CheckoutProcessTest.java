@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.MockitoAnnotations;
-import rs._1._4.rs1124.Rs1124Application;
+import rs._1._4.rs1124.Main;
 import rs._1._4.rs1124.persistence.rule.ChargeRule;
 import rs._1._4.rs1124.persistence.rule.ChargeRuleService;
 import rs._1._4.rs1124.persistence.tool.ToolInfo;
@@ -21,7 +21,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -63,13 +62,13 @@ public class CheckoutProcessTest {
     @ParameterizedTest
     @ArgumentsSource(CheckoutTestCaseArgumentsProvider.class)
     void testScenario(CheckoutTestCase testCase) {
-        try (MockedStatic<Rs1124Application> mockedStatic = mockStatic(Rs1124Application.class)) {
-            when(Rs1124Application.getToolInfoService()).thenReturn(toolInfoService);
-            when(Rs1124Application.getChargeRuleService()).thenReturn(chargeRuleService);
-            when(Rs1124Application.getDefaultDateFormatter()).thenReturn(dateFormatter);
-            when(Rs1124Application.getHolidayRule("julyfourth")).thenReturn("M07.D04.?WE:near");
-            when(Rs1124Application.getHolidayRule("laborday")).thenReturn("M09.MONDAY:1");
-            when(Rs1124Application.getToday()).thenReturn(LocalDate.parse(testCase.getCheckoutDate(), dateFormatter));
+        try (MockedStatic<Main> mockedStatic = mockStatic(Main.class)) {
+            when(Main.getToolInfoService()).thenReturn(toolInfoService);
+            when(Main.getChargeRuleService()).thenReturn(chargeRuleService);
+            when(Main.getDefaultDateFormatter()).thenReturn(dateFormatter);
+            when(Main.getHolidayRule("julyfourth")).thenReturn("M07.D04.?WE:near");
+            when(Main.getHolidayRule("laborday")).thenReturn("M09.MONDAY:1");
+            when(Main.getToday()).thenReturn(LocalDate.parse(testCase.getCheckoutDate(), dateFormatter));
 
             // Start a checkout process
             CheckoutProcess checkoutProcess = (CheckoutProcess) BasicProcessFactory.getNewProcess(BasicProcessFactory.ProcessType.CHECKOUT);
@@ -83,7 +82,7 @@ public class CheckoutProcessTest {
                     case "REQUEST_TOOL_CODE" -> {
                         when(toolInfoService.getToolInfoByToolCode(testCase.getToolCode())).thenReturn(toolInfoMap.get(testCase.getToolCode()));
                         String returnString = currentStep.doStep(testCase.getToolCode());
-                        mockedStatic.verify(Rs1124Application::getToolInfoService);
+                        mockedStatic.verify(Main::getToolInfoService);
                         yield returnString;
                     }
                     case "REQUEST_RENTAL_DAY_COUNT" -> currentStep.doStep(testCase.getRentalDayCount());
@@ -105,7 +104,7 @@ public class CheckoutProcessTest {
                         when(chargeRuleService.getChargeRuleByToolType(toolType)).thenReturn(chargeRuleMap.get(toolType));
                         ((AggregationStep) currentStep).setUserCollectedInfoSteps(checkoutProcess.getInfoCollectedSteps());
                         String returnString = currentStep.doStep(null);
-                        mockedStatic.verify(Rs1124Application::getChargeRuleService);
+                        mockedStatic.verify(Main::getChargeRuleService);
                         yield returnString;
                     }
                     default -> throw new IllegalStateException("Unexpected value: " + currentStep.getLabel());

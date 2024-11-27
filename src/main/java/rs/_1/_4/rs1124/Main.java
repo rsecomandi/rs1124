@@ -26,8 +26,8 @@ import rs._1._4.rs1124.persistence.tool.ToolInfoService;
 import rs._1._4.rs1124.presentation.ConsoleIO;
 
 @SpringBootApplication
-public class Rs1124Application {
-	public static final Logger logger = LoggerFactory.getLogger(Rs1124Application.class);
+public class Main {
+	public static final Logger logger = LoggerFactory.getLogger(Main.class);
 	private static final DateTimeFormatter defaultDateFormatter = DateTimeFormatter.ofPattern(DEFAULT_DATE_FORMAT, Locale.US);
 	private static final Map<String, String> holidayRules = new HashMap<>();
 	private static LocalDate today;
@@ -49,15 +49,15 @@ public class Rs1124Application {
 				}
 			}
 		} catch (IOException e) {
-			// i.e: "Failed to load application.properties in Rs1124Application.main."
-			logger.warn(String.format(LOG_GENERIC_LOAD_RESOURCE_ERROR, PROPERTIES, "Rs1124Application", "main"));
+			// i.e: "Failed to load application.properties in Main.main."
+			logger.warn(String.format(LOG_GENERIC_LOAD_RESOURCE_ERROR, PROPERTIES, "Main", "main"));
 		} catch (DateTimeParseException e) {
-			// i.e: "Failed to parse "gibberish" to a date using format "MM/DD/YYYY" in Rs1124Application.main."
+			// i.e: "Failed to parse "gibberish" to a date using format "MM/DD/YYYY" in Main.main."
 			logger.warn(String.format(LOG_GENERIC_DATE_PARSE_ERROR, todayOverride, DEFAULT_DATE_FORMAT, "main"));
 			today = LocalDate.now();
 		}
 
-		applicationContext = SpringApplication.run(Rs1124Application.class, args);
+		applicationContext = SpringApplication.run(Main.class, args);
 		ConsoleIO.start();
 	}
 

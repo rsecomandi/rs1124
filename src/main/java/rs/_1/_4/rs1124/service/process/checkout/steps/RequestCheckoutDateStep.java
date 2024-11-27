@@ -1,6 +1,6 @@
 package rs._1._4.rs1124.service.process.checkout.steps;
 
-import static rs._1._4.rs1124.Rs1124Application.*;
+import static rs._1._4.rs1124.Main.*;
 import static rs._1._4.rs1124.presentation.Reference.DEFAULT_DATE_FORMAT;
 import static rs._1._4.rs1124.presentation.Reference.LOG_GENERIC_DATE_PARSE_ERROR;
 

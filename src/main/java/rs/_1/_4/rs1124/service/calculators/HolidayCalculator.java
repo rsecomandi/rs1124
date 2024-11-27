@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-import static rs._1._4.rs1124.Rs1124Application.*;
+import static rs._1._4.rs1124.Main.*;
 import static rs._1._4.rs1124.presentation.Reference.*;
 import static rs._1._4.rs1124.service.calculators.HolidayCalculator.RuleSegment.*;
 

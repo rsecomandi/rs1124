@@ -1,6 +1,6 @@
 package rs._1._4.rs1124.service.process.checkout.steps;
 
-import static rs._1._4.rs1124.Rs1124Application.getToolInfoService;
+import static rs._1._4.rs1124.Main.getToolInfoService;
 
 import rs._1._4.rs1124.persistence.tool.ToolInfo;
 import rs._1._4.rs1124.service.process.StepTemplate;

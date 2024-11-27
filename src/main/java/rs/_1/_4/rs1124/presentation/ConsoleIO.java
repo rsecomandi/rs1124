@@ -1,6 +1,6 @@
 package rs._1._4.rs1124.presentation;
 
-import static rs._1._4.rs1124.Rs1124Application.logger;
+import static rs._1._4.rs1124.Main.logger;
 import static rs._1._4.rs1124.presentation.Reference.*;
 
 import java.util.Scanner;

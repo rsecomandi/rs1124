@@ -6,7 +6,7 @@ import rs._1._4.rs1124.service.validation.InputValidationException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
-import static rs._1._4.rs1124.Rs1124Application.*;
+import static rs._1._4.rs1124.Main.*;
 import static rs._1._4.rs1124.presentation.Reference.*;
 
 public class ChangeSystemDateStep extends StepTemplate {

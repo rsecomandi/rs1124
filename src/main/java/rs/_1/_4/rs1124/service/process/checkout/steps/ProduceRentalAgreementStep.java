@@ -14,7 +14,7 @@ import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.Set;
 
-import static rs._1._4.rs1124.Rs1124Application.getChargeRuleService;
+import static rs._1._4.rs1124.Main.getChargeRuleService;
 import static rs._1._4.rs1124.presentation.Reference.*;
 
 public class ProduceRentalAgreementStep extends AggregationStep {
