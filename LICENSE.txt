@@ -1,0 +1,9 @@
+Copyright 2024 Rafael Secomandi
+
+All rights reserved.
+
+This software is provided for use under the following terms:
+1. The software and its associated materials may not be copied, modified, distributed, or used for any purpose without prior written permission from the author.
+2. Unauthorized use of this software is strictly prohibited and may result in legal action.
+
+For licensing inquiries, please contact: raf.secomandi@gmail.com.

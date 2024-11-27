@@ -1,0 +1,3 @@
+
+Test Cases corresponding to the proof scenarios can be found in test-cases.json in this folder.
+The JUnit test class is test/java/rs._1._4.rs1124/service/process/checkout/CheckoutProcessTest.
